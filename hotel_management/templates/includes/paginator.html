@@ -1,0 +1,39 @@
+{% if page_obj.has_other_pages %}
+  <nav aria-label="Page navigation" class="my-5">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page=1{% if sort_field %}&sort={{ sort_field }}{% endif %}{% if selected_room %}&room={{ selected_room.id }}{% endif %}">Первая</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if sort_field %}&sort={{ sort_field }}{% endif %}{% if selected_room %}&room={{ selected_room.id }}{% endif %}">
+            <<
+          </a>
+        </li>
+      {% endif %}
+      {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+          <li class="page-item active">
+            <span class="page-link">{{ i }}</span>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ i }}{% if sort_field %}&sort={{ sort_field }}{% endif %}{% if selected_room %}&room={{ selected_room.id }}{% endif %}">{{ i }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if sort_field %}&sort={{ sort_field }}{% endif %}{% if selected_room %}&room={{ selected_room.id }}{% endif %}">
+            >>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if sort_field %}&sort={{ sort_field }}{% endif %}{% if selected_room %}&room={{ selected_room.id }}{% endif %}">
+            Последняя
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

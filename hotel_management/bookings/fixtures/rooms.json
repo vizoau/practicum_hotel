@@ -1,0 +1,112 @@
+[
+    {
+        "model": "bookings.room",
+        "pk": 1,
+        "fields": {
+            "type": 1,
+            "category": "стандарт",
+            "has_baby_cot": false,
+            "weekday_price": "2000.00",
+            "weekend_price": "2500.00"
+        }
+    },
+    {
+        "model": "bookings.room",
+        "pk": 2,
+        "fields": {
+            "type": 2,
+            "category": "стандарт",
+            "has_baby_cot": true,
+            "weekday_price": "3000.00",
+            "weekend_price": "3500.00"
+        }
+    },
+    {
+        "model": "bookings.room",
+        "pk": 3,
+        "fields": {
+            "type": 3,
+            "category": "комфорт",
+            "has_baby_cot": false,
+            "weekday_price": "4000.00",
+            "weekend_price": "4500.00"
+        }
+    },
+    {
+        "model": "bookings.room",
+        "pk": 4,
+        "fields": {
+            "type": 1,
+            "category": "люкс",
+            "has_baby_cot": true,
+            "weekday_price": "5000.00",
+            "weekend_price": "5500.00"
+        }
+    },
+    {
+        "model": "bookings.room",
+        "pk": 5,
+        "fields": {
+            "type": 2,
+            "category": "люкс",
+            "has_baby_cot": false,
+            "weekday_price": "6000.00",
+            "weekend_price": "6500.00"
+        }
+    },
+    {
+        "model": "bookings.room",
+        "pk": 6,
+        "fields": {
+            "type": 3,
+            "category": "стандарт",
+            "has_baby_cot": true,
+            "weekday_price": "3500.00",
+            "weekend_price": "4000.00"
+        }
+    },
+    {
+        "model": "bookings.room",
+        "pk": 7,
+        "fields": {
+            "type": 1,
+            "category": "комфорт",
+            "has_baby_cot": false,
+            "weekday_price": "4500.00",
+            "weekend_price": "5000.00"
+        }
+    },
+    {
+        "model": "bookings.room",
+        "pk": 8,
+        "fields": {
+            "type": 2,
+            "category": "стандарт",
+            "has_baby_cot": true,
+            "weekday_price": "2500.00",
+            "weekend_price": "3000.00"
+        }
+    },
+    {
+        "model": "bookings.room",
+        "pk": 9,
+        "fields": {
+            "type": 3,
+            "category": "люкс",
+            "has_baby_cot": false,
+            "weekday_price": "7000.00",
+            "weekend_price": "7500.00"
+        }
+    },
+    {
+        "model": "bookings.room",
+        "pk": 10,
+        "fields": {
+            "type": 1,
+            "category": "комфорт",
+            "has_baby_cot": true,
+            "weekday_price": "4000.00",
+            "weekend_price": "4500.00"
+        }
+    }
+]

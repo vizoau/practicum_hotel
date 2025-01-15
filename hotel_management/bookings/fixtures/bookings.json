@@ -1,0 +1,172 @@
+[
+    {
+        "model": "bookings.booking",
+        "pk": 1,
+        "fields": {
+            "room": 1,
+            "check_in": "2025-01-01",
+            "check_out": "2025-01-05",
+            "guest_name": "Иван Иванов",
+            "guest_phone": "+79991234567",
+            "has_baby_cot": false,
+            "status": "active",
+            "actual_check_in": null,
+            "actual_check_out": null,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "bookings.booking",
+        "pk": 2,
+        "fields": {
+            "room": 2,
+            "check_in": "2025-01-10",
+            "check_out": "2025-01-15",
+            "guest_name": "Петр Петров",
+            "guest_phone": "+79992345678",
+            "has_baby_cot": true,
+            "status": "active",
+            "actual_check_in": null,
+            "actual_check_out": null,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "bookings.booking",
+        "pk": 3,
+        "fields": {
+            "room": 3,
+            "check_in": "2025-02-01",
+            "check_out": "2025-02-05",
+            "guest_name": "Анна Сидорова",
+            "guest_phone": "+79993456789",
+            "has_baby_cot": false,
+            "status": "active",
+            "actual_check_in": null,
+            "actual_check_out": null,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "bookings.booking",
+        "pk": 4,
+        "fields": {
+            "room": 4,
+            "check_in": "2025-03-01",
+            "check_out": "2025-03-10",
+            "guest_name": "Мария Кузнецова",
+            "guest_phone": "+79994567890",
+            "has_baby_cot": true,
+            "status": "active",
+            "actual_check_in": null,
+            "actual_check_out": null,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "bookings.booking",
+        "pk": 5,
+        "fields": {
+            "room": 5,
+            "check_in": "2025-04-01",
+            "check_out": "2025-04-05",
+            "guest_name": "Сергей Васильев",
+            "guest_phone": "+79995678901",
+            "has_baby_cot": false,
+            "status": "active",
+            "actual_check_in": null,
+            "actual_check_out": null,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "bookings.booking",
+        "pk": 6,
+        "fields": {
+            "room": 6,
+            "check_in": "2025-05-01",
+            "check_out": "2025-05-10",
+            "guest_name": "Ольга Николаева",
+            "guest_phone": "+79996789012",
+            "has_baby_cot": true,
+            "status": "active",
+            "actual_check_in": null,
+            "actual_check_out": null,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "bookings.booking",
+        "pk": 7,
+        "fields": {
+            "room": 7,
+            "check_in": "2025-06-01",
+            "check_out": "2025-06-05",
+            "guest_name": "Дмитрий Смирнов",
+            "guest_phone": "+79997890123",
+            "has_baby_cot": false,
+            "status": "active",
+            "actual_check_in": null,
+            "actual_check_out": null,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "bookings.booking",
+        "pk": 8,
+        "fields": {
+            "room": 8,
+            "check_in": "2025-07-01",
+            "check_out": "2025-07-10",
+            "guest_name": "Елена Петрова",
+            "guest_phone": "+79998901234",
+            "has_baby_cot": true,
+            "status": "active",
+            "actual_check_in": null,
+            "actual_check_out": null,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "bookings.booking",
+        "pk": 9,
+        "fields": {
+            "room": 9,
+            "check_in": "2025-08-01",
+            "check_out": "2025-08-05",
+            "guest_name": "Алексей Иванов",
+            "guest_phone": "+79999012345",
+            "has_baby_cot": false,
+            "status": "active",
+            "actual_check_in": null,
+            "actual_check_out": null,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "bookings.booking",
+        "pk": 10,
+        "fields": {
+            "room": 10,
+            "check_in": "2025-09-01",
+            "check_out": "2025-09-10",
+            "guest_name": "Татьяна Соколова",
+            "guest_phone": "+79990123456",
+            "has_baby_cot": true,
+            "status": "active",
+            "actual_check_in": null,
+            "actual_check_out": null,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    }
+]

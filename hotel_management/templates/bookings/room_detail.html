@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Номер {{ room.id }}{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4 class="card-title mb-0">Номер {{ room.id }}</h4>
+            <!-- Выпадающее меню в правом верхнем углу -->
+            <div class="dropdown">
+              <button class="btn btn-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-gear"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                <li>
+                  <a class="dropdown-item" href="{% url 'bookings:room_update' room.id %}">
+                    <i class="bi bi-pencil"></i> Редактировать
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'bookings:room_delete' room.id %}">
+                    <i class="bi bi-trash"></i> Удалить
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <strong>Тип:</strong> {{ room.get_type_display }}<br>
+              <strong>Категория:</strong> {{ room.get_category_display }}<br>
+              <strong>Цена в будни:</strong> {{ room.weekday_price|floatformat:"0" }} руб.<br>
+              <strong>Цена в выходные:</strong> {{ room.weekend_price|floatformat:"0" }} руб.<br>
+              <strong>Детская кровать:</strong>
+              <span class="{% if room.has_baby_cot %}text-success{% else %}text-secondary{% endif %}">
+                {% if room.has_baby_cot %}Есть{% else %}Нет{% endif %}
+              </span>
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <!-- Основные кнопки -->
+              <a href="{% url 'bookings:booking_list' %}?room={{ room.id }}" class="btn btn-info me-2">
+                <i class="bi bi-calendar-check"></i> Бронирования
+              </a>
+              <a href="{% url 'bookings:booking_create' %}?room={{ room.id }}" class="btn btn-success me-2">
+                <i class="bi bi-plus"></i> Создать бронь
+              </a>
+              <a href="{% url 'bookings:room_list' %}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Назад к списку
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

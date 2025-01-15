@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Список номеров{% endblock %}
+
+{% block content %}
+  <h1 class="mb-4">Список номеров</h1>
+  <div class="mb-4">
+    <a href="{% url 'bookings:room_create' %}" class="btn btn-success">
+      <i class="bi bi-plus"></i> Добавить номер
+    </a>
+  </div>
+  <div class="row">
+    {% for room in rooms %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Номер {{ room.id }}</h5>
+            <p class="card-text">
+              <strong>Тип:</strong> {{ room.get_type_display }}<br>
+              <strong>Категория:</strong> {{ room.get_category_display }}<br>
+              <strong>Цена в будни:</strong> {{ room.weekday_price|floatformat:"0" }} руб.<br>
+              <strong>Цена в выходные:</strong> {{ room.weekend_price|floatformat:"0" }} руб.<br>
+              <strong>Детская кровать:</strong>
+              <span class="{% if room.has_baby_cot %}text-success{% else %}text-secondary{% endif %}">
+                {% if room.has_baby_cot %}Есть{% else %}Нет{% endif %}
+              </span>
+            </p>
+            <a href="{% url 'bookings:room_detail' room.id %}" class="btn btn-primary">
+              Подробнее
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Пагинатор -->
+  {% include 'includes/paginator.html' %}
+{% endblock %}

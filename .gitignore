@@ -1,0 +1,17 @@
+# Игнорировать папки static, static-dev и html
+/static/
+/static-dev/
+/html/
+
+# Игнорировать файлы, сгенерированные Django
+*.pyc
+__pycache__/
+*.sqlite3
+
+# Игнорировать виртуальное окружение
+venv/
+.env/
+
+# Игнорировать файлы IDE
+.idea/
+.vscode/

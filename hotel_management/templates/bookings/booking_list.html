@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Список бронирований{% endblock %}
+
+{% block content %}
+  <h1 class="mb-4">Список бронирований</h1>
+  <div class="mb-4">
+    <a href="{% url 'bookings:booking_create' %}" class="btn btn-success">
+      <i class="bi bi-plus"></i> Создать бронирование
+    </a>
+  </div>
+
+  <!-- Фильтр по номеру -->
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <form method="get" class="row g-3">
+        <div class="col-md-6">
+          <label for="room" class="form-label">Фильтр по номеру</label>
+          <select name="room" id="room" class="form-select">
+            <option value="">Все номера</option>
+            {% for room in rooms %}
+              <option value="{{ room.id }}" {% if selected_room and selected_room.id == room.id %}selected{% endif %}>
+                Номер {{ room.id }} ({{ room.get_type_display }}, {{ room.get_category_display }})
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-6 d-flex align-items-end">
+          <button type="submit" class="btn btn-primary me-2">
+            <i class="bi bi-filter"></i> Применить
+          </button>
+          <a href="{% url 'bookings:booking_list' %}" class="btn btn-secondary">
+            <i class="bi bi-x"></i> Сбросить
+          </a>
+        </div>
+        <!-- Скрытое поле для сохранения параметра сортировки -->
+        <input type="hidden" name="sort" value="{{ sort_field }}">
+      </form>
+    </div>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead class="table-light shadow-sm">
+      <tr>
+        <th>
+          <a href="?sort={% if sort_field == 'room' and sort_direction == 'asc' %}-{% endif %}room&room={% if selected_room %}{{ selected_room.id }}{% endif %}" class="text-dark text-decoration-none">
+            Номер
+            {% if sort_field == 'room' %}
+              {% if sort_direction == 'asc' %}
+                <i class="bi bi-arrow-up"></i>
+              {% else %}
+                <i class="bi bi-arrow-down"></i>
+              {% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?sort={% if sort_field == 'guest_name' and sort_direction == 'asc' %}-{% endif %}guest_name&room={% if selected_room %}{{ selected_room.id }}{% endif %}" class="text-dark text-decoration-none">
+            Гость
+            {% if sort_field == 'guest_name' %}
+              {% if sort_direction == 'asc' %}
+                <i class="bi bi-arrow-up"></i>
+              {% else %}
+                <i class="bi bi-arrow-down"></i>
+              {% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?sort={% if sort_field == 'check_in' and sort_direction == 'asc' %}-{% endif %}check_in&room={% if selected_room %}{{ selected_room.id }}{% endif %}" class="text-dark text-decoration-none">
+            Дата заезда
+            {% if sort_field == 'check_in' %}
+              {% if sort_direction == 'asc' %}
+                <i class="bi bi-arrow-up"></i>
+              {% else %}
+                <i class="bi bi-arrow-down"></i>
+              {% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?sort={% if sort_field == 'check_out' and sort_direction == 'asc' %}-{% endif %}check_out&room={% if selected_room %}{{ selected_room.id }}{% endif %}" class="text-dark text-decoration-none">
+            Дата выезда
+            {% if sort_field == 'check_out' %}
+              {% if sort_direction == 'asc' %}
+                <i class="bi bi-arrow-up"></i>
+              {% else %}
+                <i class="bi bi-arrow-down"></i>
+              {% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?sort={% if sort_field == 'total_price' and sort_direction == 'asc' %}-{% endif %}total_price&room={% if selected_room %}{{ selected_room.id }}{% endif %}" class="text-dark text-decoration-none">
+            Итоговая стоимость
+            {% if sort_field == 'total_price' %}
+              {% if sort_direction == 'asc' %}
+                <i class="bi bi-arrow-up"></i>
+              {% else %}
+                <i class="bi bi-arrow-down"></i>
+              {% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>
+          <a href="?sort={% if sort_field == 'status' and sort_direction == 'asc' %}-{% endif %}status&room={% if selected_room %}{{ selected_room.id }}{% endif %}" class="text-dark text-decoration-none">
+            Статус
+            {% if sort_field == 'status' %}
+              {% if sort_direction == 'asc' %}
+                <i class="bi bi-arrow-up"></i>
+              {% else %}
+                <i class="bi bi-arrow-down"></i>
+              {% endif %}
+            {% endif %}
+          </a>
+        </th>
+        <th>Действия</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for booking in bookings %}
+        <tr class="
+          {% if booking.status == 'active' %}table-primary{% endif %}
+          {% if booking.status == 'checked_in' %}table-success{% endif %}
+          {% if booking.status == 'checked_out' %}table-secondary{% endif %}
+          {% if booking.status == 'cancelled' %}table-danger{% endif %}
+        ">
+          <td>{{ booking.room.id }}</td>
+          <td>{{ booking.guest_name }}</td>
+          <td>{{ booking.check_in }}</td>
+          <td>{{ booking.check_out }}</td>
+          <td>{{ booking.total_price|floatformat:"2" }} руб.</td>
+          <td>{{ booking.get_status_display }}</td>
+          <td>
+            <a href="{% url 'bookings:booking_detail' booking.id %}" class="btn btn-sm btn-primary">
+              <i class="bi bi-eye"></i> Подробнее
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Пагинатор -->
+  {% include 'includes/paginator.html' %}
+{% endblock %}

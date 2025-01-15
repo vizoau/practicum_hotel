@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Удалить номер{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-header bg-danger text-white">
+            <h4 class="card-title mb-0">Удалить номер</h4>
+          </div>
+          <div class="card-body">
+            <p>Вы уверены, что хотите удалить номер {{ room.id }}?</p>
+            <form method="post">
+              {% csrf_token %}
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-danger">
+                  <i class="bi bi-trash"></i> Удалить
+                </button>
+                <a href="{% url 'bookings:room_detail' room.id %}" class="btn btn-secondary">
+                  <i class="bi bi-x-circle"></i> Отмена
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

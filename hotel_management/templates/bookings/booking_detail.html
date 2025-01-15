@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Бронирование {{ booking.id }}{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h4 class="card-title mb-0">Бронирование {{ booking.id }}</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <strong>Номер:</strong> {{ booking.room.id }}<br>
+              <strong>Гость:</strong> {{ booking.guest_name }}<br>
+              <strong>Телефон:</strong> {{ booking.guest_phone }}<br>
+              <strong>Дата заезда:</strong> {{ booking.check_in }}
+              <span class="ms-3">
+                <strong>Фактическая дата заезда:</strong>
+                <span class="{% if booking.actual_check_in %}text-success{% else %}text-secondary{% endif %}">
+                  {% if booking.actual_check_in %}{{ booking.actual_check_in }}{% else %}Не заселен{% endif %}
+                </span>
+              </span><br>
+              <strong>Дата выезда:</strong> {{ booking.check_out }}
+              <span class="ms-3">
+                <strong>Фактическая дата выезда:</strong>
+                <span class="{% if booking.actual_check_out %}text-success{% else %}text-secondary{% endif %}">
+                  {% if booking.actual_check_out %}{{ booking.actual_check_out }}{% else %}Не выселен{% endif %}
+                </span>
+              </span><br>
+              <strong>Итоговая стоимость:</strong> {{ booking.total_price|floatformat:"2" }} руб.<br>
+              <strong>Статус:</strong> {{ booking.get_status_display }}<br>
+              <strong>Детская кровать:</strong>
+              <span class="{% if booking.has_baby_cot %}text-success{% else %}text-secondary{% endif %}">
+                {% if booking.has_baby_cot %}Да{% else %}Нет{% endif %}
+              </span>
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a href="{% url 'bookings:booking_update' booking.id %}" class="btn btn-warning">
+                <i class="bi bi-pencil"></i> Редактировать
+              </a>
+              <a href="{% url 'bookings:booking_delete' booking.id %}" class="btn btn-danger">
+                <i class="bi bi-trash"></i> Удалить
+              </a>
+              <a href="{% url 'bookings:booking_list' %}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Назад к списку
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

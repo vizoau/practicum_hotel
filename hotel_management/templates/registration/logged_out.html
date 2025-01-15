@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Выход{% endblock %}
+
+{% block content %}
+  <h1 class="mb-4">Вы вышли из системы</h1>
+  <p>
+    <a href="{% url 'login' %}" class="btn btn-primary">Войти снова</a>
+  </p>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Ошибка сервера (500){% endblock %}
+
+{% block content %}
+  <div class="container text-center mt-5">
+    <h1 class="display-1">500</h1>
+    <p class="lead">На сервере произошла ошибка. Пожалуйста, попробуйте позже.</p>
+    <a href="{% url 'bookings:room_list' %}" class="btn btn-primary">
+      Вернуться на главную
+    </a>
+  </div>
+{% endblock %}
