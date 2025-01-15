@@ -1,7 +1,7 @@
 # Игнорировать папки static, static-dev и html
-/static/
-/static-dev/
-/html/
+hotel_managment/static/
+hotel_managment/static-dev/
+hotel_managment/html/
 
 # Игнорировать файлы, сгенерированные Django
 *.pyc
@@ -15,3 +15,18 @@ venv/
 # Игнорировать файлы IDE
 .idea/
 .vscode/
+
+# Игнорировать базу данных
+*.sqlite3
+
+# Игнорировать миграции (кроме __init__.py)
+*/migrations/*
+!*/migrations/__init__.py
+
+
+# Игнорировать сгенерированные статические файлы
+staticfiles/
+
+# Игнорировать кэш Python
+__pycache__/
+*.pyc
